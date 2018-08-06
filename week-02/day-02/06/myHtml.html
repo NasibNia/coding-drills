@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+</head>
+<body>
+	<div> you just pressed <span id="text"></span></div>
+
+	<script type="text/javascript">
+
+		var text = document.getElementById("text");
+		var typed = "";
+		var alphabet = "abcdefghijklmnopqrstuvwxyz";
+		
+		function isAlphabet(char){
+			if (alphabet.indexOf(char) !== -1){
+				return true;
+			}
+		}
+		
+		document.onkeypress = function(event){
+
+			typed = event.key;
+			if (isAlphabet(typed)){
+				console.log("your inside the function");
+				text.textContent = typed;
+
+			} else{
+				console.log("enter a letter");
+				text.textContent = typed + " which is not an alpahebt letter; Please try egain";
+			}
+
+		}
+
+		
+		
+	</script>
+	
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div> you just typed <span id="text"></span></div>
+
+	<script type="text/javascript">
+
+		var isH = false;
+
+		document.onkeyup = function(event){
+			
+			var userKey = event.key.toLowerCase();
+			document.querySelector("#text").textContent = userKey;
+			console.log(userKey);
+			
+			isH = confirm("Did you just pressed h?");
+
+			
+			if (userKey == "k"){
+				if (isH){
+					alert("hello");
+				} else {
+					alert("No, thanks!");
+				}
+			}
+			
+		}
+	</script>
+	
+
+</body>
+</html>

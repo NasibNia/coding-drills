@@ -19,11 +19,11 @@
     // If the number is 42, console.log(true). If it isn't 42, console.log(false)
     function numberGuess(int) {
     // --------- code starts --------------
-
-
-
-
-
+      if (int === 42){
+        console.log(true);
+        return;
+      }
+      console.log(false);
     // --------- code ends --------------
     }
     
@@ -40,11 +40,13 @@
 
     function findSmallest(arr) {
     // --------- code starts --------------
-
-
-
-
-
+      var min = arr[0];
+      for (var i = 0 ; i < arr.length ; i++){
+        if (arr[i] < min){
+          min = arr[i];
+        }
+      }
+      console.log("min of array is " + min);
     // --------- code ends --------------
     }
 
@@ -58,11 +60,14 @@
 
     function findShortest(arr){
     // --------- code starts --------------
-
-
-
-
-
+      var shortest =  arr[0];
+      for (var i = 0 ; i < arr.length ; i++){
+          var str = arr[i];
+          if (str.length < shortest.length){
+            shortest = str;
+          }
+      }
+      console.log("shortest array is "+ shortest);  
     // --------- code ends --------------
     }
 
@@ -77,13 +82,15 @@
     // The function should console.log a new array of numbers where none of the elements are less than
     // the low value and none of the elements are greater than the high value
 
-    function filterArray(high, low, arr){
+    function innerBound(high, low, arr){
     // --------- code starts --------------
-
-
-
-
-
+    var newArr = [];
+    for (var i = 0 ; i < arr.length ; i++){
+      if (arr[i] > low && arr[i] < up){
+        newArr.push(arr[i]);
+      }
+    }
+    console.log(newArr);  
     // --------- code ends --------------
     }
 

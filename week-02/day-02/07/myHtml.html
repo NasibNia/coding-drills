@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div><p>Enter your number and operators in the lines below</p></div>
+	<div><p>You can also enter C to clear the calculations and start new one:</p></div>
+	
+	<h2 id="number1"></h2>
+	<h2 id="operator"></h2>
+	<h2 id="number2"></h2>
+	<h2 id="result"> </h2>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript"> 
+
+		var option="0123456789pmtd=c";
+		var numOption = "0123456789";
+		var opOption = "pmtd";
+		var equal;
+		var clear;
+		var num1 = "";
+		var num2 = "";
+		var num= "";
+		var op = "";
+		var opFlag = false;
+		var result = 0;
+
+		function reset (){
+			num1 = "";
+			num2 = "";
+			num = "";
+			op = "";
+			opFlag = false;
+			result = 0;
+		}
+
+		function isAcceptable(char){
+			// console.log("you entered : " + char);
+			if (option.indexOf(char) === -1){
+				// console.log("which is not acceptable ");
+				return false;
+			}
+			// console.log("which is TOTALLY acceptable ");
+			return true;
+		}
+
+		function isOperation(char){
+			// console.log("you entered : " + char);
+			if (opOption.indexOf(char) === -1 ){
+				// console.log("which is not operator ");
+				return false;
+			}
+			num = "";
+			// console.log("number = " + num)
+			// console.log("which is TOTALLY acceptable ");
+			op = char;
+			opFlag = true;
+			return true;
+		}
+		function isNumber(char){
+			// console.log("you entered : " + char);
+			if (numOption.indexOf(char) === -1){
+				// console.log("not a number");
+				return false;
+			} 
+			// console.log("TOTALLY a number");
+			return true;
+		}
+
+
+		document.onkeyup = function (event){
+
+			var input = event.key;
+			// console.log ("input is "+ input);
+
+			if (isAcceptable(input)){
+
+				isOperation(input);
+				// console.log ("opFlag is "+ opFlag);
+
+				if (isNumber(input)){
+					num = num + input;
+					// console.log ("num is "+ num);
+
+					if(opFlag){
+						num2 = num;
+						$("#number2").textContent = num2;
+					} else {
+						num1 = num;
+						$("#number1").textContent = num1;
+					}
+				}
+
+				if (input === "="){
+					console.log("number 1 equals to : " + num1);
+					console.log("number 2 equals to : " + num2);
+					// console.log("operation equals to : " + op)
+					switch (op){
+						case "p":
+							// console.log("number 1 equals to : " + num1);
+							// console.log("number 2 equals to : " + num2);
+							result = parseInt(num1) + parseInt(num2);
+							$("#result").textContent = result;
+							console.log("equals to " + result);
+							break;
+						case "m":
+							result = parseInt(num1) - parseInt(num2);
+							$("#result").textContent = result;
+							console.log("equals to " + result);
+							break;
+						case "t":
+							result = parseInt(num1) * parseInt(num2);
+							$("#result").textContent = result;
+							console.log("equals to " + result);
+							break;
+						case "d":
+							result = parseInt(num1) / parseInt(num2);
+							$("#result").textContent = result;
+							console.log("equals to " + result);
+							break;
+						default:
+							// console.log ("nothing");
+					}
+				}
+
+				if (input === "c"){
+					reset();
+				}
+
+
+			}
+		}
+		
+			
+	</script>
+
+</body>
+</html>

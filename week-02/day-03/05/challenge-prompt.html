@@ -17,9 +17,12 @@
 var bool = false;
 
 function fun(arg) {
-
   //Your answer in the console.log()
-  console.log();
+  if(arg){
+    console.log("Yea, it's true");
+    return;
+  } 
+  console.log("Nah, it's false"); 
 }
 
 fun(bool) 
@@ -34,6 +37,15 @@ fun(bool)
 //Then, Similar to question 1, create a function called canYouBall, which takes in an argument (name of your choosing). 
 // If the argument is true, console.log("Welcome to the Warriors"). If it is false, console.log("It's ok, there's always code :)").
 //Call your canYouBall function, passing in the likesBasketball variable (if you're having trouble remembering what this means, refer to line 25 above). 
+var likesBasketball = true;
+function canYouBall(arg){
+  if (arg){
+    console.log("Welcome to the Warriors");
+    return;
+  }
+  console.log("It's ok, there's always code :)");
+}
+canYouBall(likesBasketball);
 
 // ==============================================================
 
@@ -41,6 +53,13 @@ fun(bool)
 // ========================= QUESTION 3 =========================
 // In this exercise, make a function which takes in an argument (very similar to the past two questions). If the argument is true, console.log("I exist"). If the argument is false, console.log("Nobody's home").
 
+function fun3(arg){
+  if (arg){
+    console.log("I exist");
+    return;
+  }
+  console.log("Nobody's home");
+}
 
 // ==============================================================
 
@@ -50,7 +69,9 @@ var personOne = "Asher"
 var personTwo;
 // Call the function you made in question 3 twice. In the first instance, pass in personOne. In the second instance, pass in personTwo.
 
-// Comment out what you expect to see in the console from each function. Then, compare your guess to the actual console.log in the browser. 
+// Comment out what you expect to see in the console from each function. Then, compare your guess to the actual console.log in the browser.
+fun3(personOne);   //true ---> I exist
+fun3(personTwo);   //false ---> Nobody's home
 
 // ==============================================================
 
@@ -64,7 +85,10 @@ var three = 3;
 // Call the function you made in question 3 four times. In each instance, pass in a different one of the four given variables.
 
 // Comment out what you expect to see in the console from each function. Then, compare your guess to the actual console.log in the browser. 
-
+fun3(zero);    //true ---> I exist
+fun3(one);     //true ---> I exist
+fun3(two);     //true ---> I exist
+fun3(three);   //true ---> I exist
 
 // ==============================================================
 
