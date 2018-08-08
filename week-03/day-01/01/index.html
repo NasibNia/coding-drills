@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<div id="info">
+		<form>
+			First name:<br>
+	  		<input type="text" name="firstname" id="firstname" ><br>
+	  		Last name:<br>
+	  		<input type="text" name="lastname" id="lastname" ><br>
+	  		Ocupation:<br>
+	  		<input type="text" name="occupation" id="occupation"><br>
+	  		City:<br>
+	  		<input type="text" name="city" id="city"><br>
+	  		State:<br>
+	  		<input type="text" name="state" id="state"><br>
+	  		<button id="submitBtn" bg-light>Submit</button>
+		</form>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+	$(document).ready(function(){
+		var fistName;
+		var lastName;
+		var occupation;
+		var city;
+		var state;
+
+		$("#submitBtn").on('click', function(){
+			
+
+			firstName = $("#firstname").val();
+			lastName = 	$("#lastname").val();
+			occupation = $("#occupation").val();
+			city = $("#city").val();
+			state = $("#state").val();
+
+			$("#info").html('<h1> Thanks for your intrest </h1> <h2> Your info are as below: </h2> <h3>'+firstName + " "+ lastName + '</h3>')
+			$("#info").append('<h3>' + occupation + ' , '+city + ' , ' + state + '</h3>');
+		});
+
+	});
+
+	// My Learning Note: 
+ 	// 	the feild values are accessable using .VALUE property
+ 
+
+	</script>
+
+
+
+</body>
+</html>
