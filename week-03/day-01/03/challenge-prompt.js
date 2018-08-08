@@ -25,25 +25,29 @@ var question2time = setTimeout(function(){
 
 
 // Remove the timer you just made for Question 2
+clearTimeout(question2time);
 
 // clearTimeOut(question2time);
 
 console.log("==================== Question 03 ====================");
 // Create a timer that creates an alert that says "Question 3 part 1" after 15 seconds
-vat timer3 = setTimeout(function(){
+var timer3 = setTimeout(function(){
 	alert("question 3 part 1")},2000)
 
 
 // Create a timer that creates an alert that says "Question 3 part 2" after 16 seconds
-vat timer4 = setTimeout(function(){
+var timer4 = setTimeout(function(){
 	alert("question 3 part 2")},2500)
 
 console.log("==================== Question 04 ====================");
 // Remove the timer from Question 3 part 1
+clearTimeout(timer3);
 
 
 
 console.log("==================== Question 05 ====================");
 // Create a timer that plays a sound after 11 seconds and console logs "Question 5 Completed!"
-
+setTimeout(function(){
+	console.log("Question 5 Completed!");
+},11000);
 
