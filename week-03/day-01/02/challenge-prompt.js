@@ -6,17 +6,15 @@
 // its text value and its data value. We will be using this button to
 // display the string in the display-area when clicked later.
 function createButton(str) {
-  // ---------- Your Code Here ----------
-
-  // console.log($('<button value='+ str + '>' + str +'</button>'))
-  
+  // ---------- Your Code Here ----------   
+  // console.log($('<button value='+ str + '>' + str +'</button>'))  
   // console.log(str)
-  $('<button value='+ str + '>' + str +'</button>');
+  var newBtn = $('<button>');
+  newBtn.attr("value", str);
+  newBtn.attr("class", "new-button");
+  newBtn.text(str);
+  $("#button-area").append(newBtn);
   return; 
-
-
-
-
   // ---------- End of Code area ----------
 }
 
@@ -29,9 +27,15 @@ function createButton(str) {
 // This function should take the string stored in the data field of the button
 // that was clicked on and append it to the display-area.
 function displayContent(event) {
+  
   // ---------- Your Code Here ----------
-
-  $("#display-area").append($("#user-input").val());
+  //console.log( event ); 
+  // console.log( event.type );    // The event type, eg. "click"
+  // console.log( event.which );   // The button or key that was pressed.
+  // console.log( event.target );  // The originating element.
+  // console.log( event.pageX );   // The document mouse X coordinate.
+  // console.log( event.pageY );
+  // $("#display-area").append($("#user-input").val());
   // console.log($("#display-area").append($("#user-input").val()))
   // console.log($("#user-input").val());
 
@@ -46,12 +50,17 @@ function displayContent(event) {
 // document.ready shorthand
 // Put your click listeners here.
 $(function () {
+  
   // ---------- Your Code Here ----------
-
-  // console.log($("#user-input").val());
-  $("#submit-button").on('click', createButton($("#user-input").val()));
-  $("#button-area").on('click',displayContent());
-
+// event.preventDefault();
+  // var inputText = "nasibkharoo"
+  
+  var inputText = $("#user-input").val() ;
+  console.log(inputText);
+  $(document).on('click', "#submit-button", function(){
+  });
+  // $("#button-area").on('click',displayContent('click'));
+// displayContent(event);
 
   // ---------- End of Code area ----------
-})
+});

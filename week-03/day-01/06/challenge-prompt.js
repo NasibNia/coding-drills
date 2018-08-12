@@ -6,10 +6,10 @@
 console.log("==================== Question 01  ====================");
 // Constructing a Custom Object:
 // So far you have learned about arrays and objects and played with enumerators (loops!). 
-var toyArray = ["Water Balloon","Silly Putty","Paint-by-Numbers Kit",
+var toyArray = ["Water Balloon","Paint-by-Numbers Kit",
              "Mr. Potato Head","Wiffle Ball","PEZ Dispenser",
              "Mr. Potato Head","Gumby","Hula Hoop","Mr. Potato Head",
-             "Troll Doll","Silly Putty","Slip n Slide"]
+             "Troll Doll","Silly Putty","Slip n Slide","Silly Putty", "Silly Putty"];
 
 // For this challenge, iterate over the provided `toyArray` and create your own custom `toyInventoryObj`. 
 //`toyInventoryObj` will be an object with key-value pairs. 
@@ -25,22 +25,29 @@ var toyArray = ["Water Balloon","Silly Putty","Paint-by-Numbers Kit",
 
 function returnCustomObject(arr){
 	var obj ={};
-  
-  // ---------- Your Code Here ----------
-
-
-
-
-
-
+  // create an initialize obj with the toyArray elements all false value 
+  for(var i=0; i < toyArray.length ; i++){
+    obj[toyArray[i]] = false;
+  }
+  // console.log("Newobj = " + obj);
+  // going through the array one more time, taking each element and call the object property with the same name, if it is false meaning it hasnn't counted yet, change the false value to 1, if not means it has aready existed on the array, add the value by 1
+  for(var i = 0; i < toyArray.length ; i++){
+    if (!obj[toyArray[i]]){
+      obj[toyArray[i]] = 1;
+    } else {
+      obj[toyArray[i]]++;
+    }
+  }
+  // console.log("updateobj = " + obj);
+  // console.log("}");
   // ---------- End of Code Area ----------
-
 	return obj;
 }
 
 // calling on your function and storing the return value
 var toyInventoryObj = returnCustomObject(toyArray);
 console.log(toyInventoryObj);
+
 // This is what I would expect as the return value of the `toyInventoryObj`:
 
 // { 'Water Balloon': 1,
@@ -65,26 +72,56 @@ console.log("==================== Question 02  ====================");
 // Return the toy that occurs the greatest number of times using the `toyInventoryObj`.
 
 function greatestFrequency(toyInventory){
-  var maxToy, maxNum;
+  var maxToy;
   
   // ---------- Your Code Here ----------
 
+  // this didn't work
+  // for (var property in toyInventory){
+    
+  //   if (toyInventory.hasOwnProperty(property)) {
+  //     console.log(toyInventory.property);
+  //     
+  //   }   
+  // }
 
+  // // this approach worked to iterate through the object property
+  // Object.getOwnPropertyNames(toyInventory).forEach(key => {
+  //   let value = toyInventory[key];
 
+  //   console.log(key);
+  //   console.log(value);
 
+  //   //use key and value here
+  // });
 
+  // this one also worked:
+  var maxNum = 1;
+  var maxToy =[];  /// Used Array to capture cases that maxToy is more than one option
+  Object.keys(toyInventory).forEach(key => {
+    let value = toyInventory[key];
+
+    if (value == maxNum){
+      maxToy.push(key);
+    } else if(value > maxNum) {
+      maxToy =[];
+      maxToy.push(key);
+      maxNum = value;
+    } 
+
+    console.log(maxToy);
+    // console.log(key);
+    // console.log(value);
+  });
 
   // ---------- End of Code Area ----------
 
-	console.log("The toy that occurs the greatest number of times is "+ maxToy + ", which occurs " + maxNum +" times.")
+	console.log("The toy that occurs the greatest number of times is "+ maxToy + ", which occurs " + maxNum +" times.");
 }
 
 // The console log of your application should be the following string: 
 // "The toy that occurs the greatest number of times is 'Mr. Potato Head', which occurs 3 times."
 greatestFrequency(toyInventoryObj);
-
-
-
 
 // ------------------------------------------------------------------
 console.log("==================== Question 03  ====================");
@@ -101,7 +138,12 @@ function toyArrToObj(arrayOfToys){
 
   // ---------- Your Code Here ----------
 
-
+  
+  for (var i  = 0 ; i < toyArray.length ; i++ ){
+    var obj = {};
+    obj["name"] = toyArray[i];
+    toyArrayOfObjs.push(obj);
+  }
 
 
 
@@ -214,15 +256,32 @@ toyInventoryArrayOfObjects = [
 // We can to consolidate the array of toy objects into a toyline object as defined by the instructions above
 function createCustomObject(objectArr){
 
-	customToyLineObj = {};
+  var customToyLineObj = {};
+  // var subObj = {"toyLine":"",
+  //               "toyLineToys":[],
+  //               "totalToysInToyLine" : 0
+  //             };
 
   // ---------- Your Code Here ----------
+  //initialize the object
+  
+  for (var i = 0 ; i < objectArr.length; i++){
 
-
-
-
-
-
+    var toyLinePar = objectArr[i].toyLine;
+    if (!(toyLinePar in customToyLineObj)){
+      // console.log(toyLinePar + " doesn't exist in customToyLineObj ");
+      customToyLineObj[toyLinePar] = {"toyLine":toyLinePar ,
+                                      "toyLineToys":[] ,
+                                      "totalToysInToyLine" : 0};
+      console.log("the new customToyLineObj  " + customToyLineObj);
+    }
+    // console.log(" toy line : " + toyLinePar);
+    customToyLineObj[toyLinePar]["toyLineToys"].push(objectArr[i].title);
+    console.log("Toys   " + customToyLineObj[toyLinePar]["toyLineToys"]);
+    customToyLineObj[toyLinePar]["totalToysInToyLine"] += objectArr[i].stock;
+    // console.log(" Numbers  " + customToyLineObj.toyLinePar.totalToysInToyLine );
+    // console.log("test " + customToyLineObj.toyLinePar);
+    }
   // ---------- End of Code Area ----------
 
 	return customToyLineObj
@@ -263,9 +322,19 @@ function areDups(arr){
 
   // ---------- Your Code Here ----------
 
+  var duplicate = {};
 
+  for (var i = 0 ; i < arr.length ; i ++){
+    var elem = arr[i];
+    if (!(elem in duplicate)){
+      duplicate [elem] = false;
+    } else {
+      duplicate [elem] = true;
+      return true;
+    }
+  }
 
-
+  return false;
 
 
   // ---------- End of Code Area ----------
