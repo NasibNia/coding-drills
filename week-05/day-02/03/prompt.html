@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+
+
+  <script>
+  var sent1 = "Sasha is very nice";
+  var sent2 = "Robert is very kind";
+  
+  function uncommon(s1, s2) {
+// ===================== YOUR WORK HERE =====================
+var arr = [];
+var shorter;
+var longer;
+if(s1.length < s2.length) {
+  shorter = s1;
+  longer = s2;
+} else {
+  shorter = s2;
+  longer = s1;
+}
+
+for (let i = 0; i < shorter.length; i++) {
+  if (!longer.include(shorter[i])){
+    arr.push(shorter[i]);
+  }
+}
+return arr;
+
+// ==========================================================
+  }
+
+// Should return: ["Sasha", "nice", "Robert", "kind"]
+  console.log(uncommon(sent1, sent2))
+  
+  </script>
+</body>
+</html>

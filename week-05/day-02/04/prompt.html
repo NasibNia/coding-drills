@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var movements = "UUURDLURLDDRDLLLLRRUUDDDRLRU"
+
+
+    function backToSquareOne(moves) {
+// ===================== YOUR WORK HERE =====================
+
+      var coord = {
+        x : 0,
+        y : 0
+      }
+
+      for (let i = 0; i < moves.length; i++) {
+        var dir = moves[i];
+        if (dir === "U"){
+          coord.y = coord.y +1;
+        } else if (dir === "D"){
+          coord.y = coord.y-1;
+        } else if (dir === "L"){
+          coord.y = coord.x -1;
+        } else if (dir === "R"){
+          coord.y = coord.y +1;
+        } 
+      }
+
+
+// ==========================================================
+
+    }
+  //Returns true
+    console.log(backToSquareOne(movements))
+  </script>
+</body>
+</html>

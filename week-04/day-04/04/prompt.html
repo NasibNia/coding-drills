@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    var array = ["predestined", "predetermined", "prescient", "preschool", "precious"]
+    var array2 = ["predestined", "predetermined"]
+    var array3 = ["prescient", "preschool"]
+
+    function longestPrefix(arr) {
+    
+    // ====================== YOUR WORK HERE ======================
+    var pre = [];
+    var isCommon = true;
+
+    var minLength = arr[0];
+    for (var i = 0; i < arr.length; i++) { 
+      if (arr[i].length < minLength){
+        minLength = arr[i];
+      }
+    }
+    for (var j= 0; j < minLength.length; j++) { 
+        ltr = arr[0][j];
+        for (var i = 1; i < arr.length; i++) { 
+          if(arr[i][j] !== ltr) {
+            isCommon = false;
+            return pre;
+          } 
+        }
+        if(isCommon){
+          pre.push(ltr);
+        }
+    }
+
+
+    // ============================================================
+
+    }
+
+    console.log(longestPrefix(array)) // pre
+    console.log(longestPrefix(array2)) // prede
+    console.log(longestPrefix(array3)) // presc
+
+  </script>
+</body>
+</html>
