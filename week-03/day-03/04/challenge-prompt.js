@@ -10,8 +10,8 @@ for (var i = 0 ; i < arr.length ; i++){
 
     var isSwaped = true;
 
-    num1 = arr[i];
-    num2 = arr[i+1];
+    var num1 = arr[i];
+    var num2 = arr[i+1];
 
     if (num1 < num2){
         arr[i+1] = num1;

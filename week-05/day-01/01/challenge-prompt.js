@@ -12,14 +12,12 @@
 function reverse(str) {
   // -------------------- Your Code Here --------------------
 
-  var newArr = [];
-  var arr = str.split(" ");
+  var newStr = "";
   
   for (let i = str.length; i > 0 ; i--) {
-    newArr.push(str[i]);  
+    newStr.push(str[i]);  
   }
-
-
+  return newStr;
 
 
   // --------------------- End Code Area --------------------

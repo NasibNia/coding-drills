@@ -12,11 +12,20 @@
 // ----------------------------------------------------------
 function zipArrays(arr1, arr2) {
   // -------------------- Your Code Here --------------------
-
-
-
-
-
+  var length = arr2.length;
+  if (arr1.length > arr2.length){
+    length = arr1.length;
+  }
+  var arr = [];
+  for (var i = 0; i < length; i++) {
+    if(arr1[i]){
+      arr.push(arr1[i]+arr2[i]);
+    } else {
+      arr.push(arr2[i]);
+    }
+      
+  }
+  return arr;
 
   // --------------------- End Code Area --------------------
 }

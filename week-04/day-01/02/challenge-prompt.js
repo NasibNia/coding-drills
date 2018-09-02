@@ -19,8 +19,8 @@ function displayButtons(buttons){
 // and inserts the replacement at the index within in the string,
 // overwriting the existing characters within that string.
 function replaceChar(str, index, val) {
-  firstHalf = str.substr(0, index);
-  secondHalf = str.substr(index + val.length)
+  var firstHalf = str.substr(0, index);
+  var secondHalf = str.substr(index + val.length);
   return firstHalf + val + secondHalf;
 }
 

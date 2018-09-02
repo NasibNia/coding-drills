@@ -7,10 +7,54 @@
 
 // -------------------------------------------------------
 //                Helper Functions (Optional)
-//
+function isPrime(num){
+  if (num === 1 || num ===2 || num===3){
+    return true;
+  }
+  for(var i =2 ; i<=num/2 ; i++){
+    if (num%i === 0){
+      return false;
+    }
+  } 
+  return true;
+}
+
 // -------------------- Your Code Here --------------------
+function primeArray (arr){
+  var primeArr = [];
+  for  (var i = 0 ; i < arr.length ; i++){
+    if(isPrime(arr[i])){
+      primeArr.push(arr[i]);
+    }
+  }
+  return primeArr;
+}
 
 
+function bubleSort (arr){
+  var isSwapped  = true;
+  var range = arr.length;
+
+  while(isSwapped && range >=-1){
+    isSwapped = false;
+
+    for (var i = 0; i < arr.length-1 ; i++){
+      if(arr[i]<arr[i+1]){
+        var tmp = arr[i];
+        arr[i] = arr[i+1];
+        arr[i+1] = tmp;
+        isSwapped = true;
+      }
+      if(isSwapped) {
+        range--;
+      } else {
+        isSwapped = false;
+      }
+    }
+  }
+  return arr;
+
+}
 
 
 
@@ -22,9 +66,11 @@
 // -------------------------------------------------------
 function primeSort(arr) {
   // -------------------- Your Code Here --------------------
+  var pArray  = primeArray(arr);
+  var sortArr = bubleSort(pArray);
 
 
-
+  return sortArr;
 
 
   // --------------------- End Code Area --------------------

@@ -12,10 +12,61 @@
 // ----------------------------------------------------------
 function findRepeats(arr) {
   // -------------------- Your Code Here --------------------
+  var obj = {};
+  for (var i = 0; i < arr.length; i++) {
+    var elem = arr[i];
+    if(elem in obj){
+      console.log(elem + "  repeated word");
+    } else {
+      obj[elem] = true;
+    }
+  }
+
+  //now would need a alphabetical sort function
+
+  var refrence = 'abcdefghijklmnopqrstuvwxyz';
+// a function that compares two letters and return a sorted array
+function sortLetter (a , b){
+  if (refrence.indexOf(a) < refrence.indexOf(b)) {
+  }
+}
+
+//sorts the words in the arr in an alphabetical order:
+  function sortWords (arrayOfNumbers){
+    //do bubble sort;
+  }
+
+  function letterToNum (letter){
+    return refrence.indexOf(letter);
+  }
+
+  function wordToNum (word){
+    var code = "";
+    for (var i = 0 ; i < word.length ; i++){
+      var letter = letterToNum(word[i]);
+      code = code + letter;
+    }
+    return parseInt(code);
+  }
+
+  function numArray (strArr) {
+    var numArr = [];
+    for (var i =0 ; i < strArr.length ; i++){
+      var wordNum = wordToNum (strArr[i]); 
+      numArr.push(wordNum);
+    }
+  }
+
+  var arrayOfNums = wordToNum(array of words);
+  sortWords(arrayOfNums);
 
 
-
-
+  // another way to improve time efficiency is to only look at the first letter
+  var letterArr = [];
+  for (var i = 0 ; i < word.length; i++){
+    letterToNum(word[i][0]);
+  }
+  // and then call the bubble sort on letterArr
 
 
   // --------------------- End Code Area --------------------

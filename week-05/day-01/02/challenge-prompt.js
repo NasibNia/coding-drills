@@ -10,7 +10,14 @@
 // -------------------- Your Code Here --------------------
 
 
-
+function isPrime(num){
+  for(var i = 0 ; i < num.length/2; i++){
+    if (num% i === 0){
+      return false;
+    }
+  }
+  return true;
+}
 
 
 // --------------------- End Code Area --------------------
@@ -22,12 +29,15 @@
 // ----------------------------------------------------------
 function primeFactors(num) {
   // -------------------- Your Code Here --------------------
-
-
-
-
-
-
+  for(var i=0; i<=num/2 ; i ++){
+    if (num%i === 0){
+      console.log("number " + i + "is a factor");
+      if(isPrime(i)){
+        console.log("and it is a Prime factor");
+      } else {
+        console.log("not a prime factor")
+      };
+    }
   // --------------------- End Code Area --------------------
 }
 
