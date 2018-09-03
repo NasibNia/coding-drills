@@ -14,12 +14,44 @@
   <script>
     function levensthein(str1, str2) {
       // =============== YOUR WORK HERE ======================
-
-
-
-
+      console.log(str1,str2);
+      var length1 = str1.length;
+      var length2 = str2.length;
+      var leven = 0;
+      var index = 1;
+      var common = "";
+      
+      while(index <= length1){
+        var iterate = true;
+        var itStr = "";
+        var save = "";
+        index--;
+        while(iterate){
+          itStr = itStr + str1[index];
+          if(str2.includes(itStr)) {
+            iterate =true;
+            save = itStr;  
+          } else {
+            iterate = false;  
+          }
+          index++;
+        }
+        if(save.length=== 0 && !iterate){
+          index++;
+        }
+        common = common + save;
+      } 
+      console.log("common  " + common);
+      
+      if(length1 > length2){
+        leven =length2-common.length
+      } else{
+        leven =length2-common.length
+      }
+      console.log("levensthein number is  "  + leven);
+      return leven;
       // =====================================================
-    }
+  }
 
     levensthein("robert", "robbery")
     levensthein("yeah", "lmno")

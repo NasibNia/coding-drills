@@ -13,7 +13,18 @@
     function unique(str) {
     // ====================== YOUR WORK HERE ===================
 
+      trackObj = {};
 
+      for (var i = 0; i < str.length; i++) {
+        var letter = str[i];
+
+        if (letter in trackObj){
+          return false;
+        }else {
+          trackObj[letter] = true;
+        }      
+      }
+      return true;
 
 
 

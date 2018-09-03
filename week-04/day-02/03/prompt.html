@@ -12,7 +12,24 @@
   <script>
     function compressor(str) {
     // ====================== YOUR WORK HERE ===================
+    trackObj = {};
 
+    for (var i = 0; i < str.length; i++) {
+      var letter = str[i];
+
+      if (letter in trackObj){
+        trackObj[letter] += 1;
+      }else {
+        trackObj[letter] = 1;
+      }      
+    }
+    var out = ""
+    for (key in trackObj){
+      var value = trackObj[key];
+      out = out + key + value;
+    }
+
+    return out;
 
 
 

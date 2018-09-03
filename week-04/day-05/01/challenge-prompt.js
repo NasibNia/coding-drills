@@ -22,7 +22,19 @@
 function sing(maxBottles) {
   // -------------------- Your Code Here --------------------
 
+  var i = maxBottles ;
+  while(i > 0 ){
+    var txt1 = i + " bottles of beer on the wall, " + i + " bottles of beer.";
+    var txt2 = "Take one down, pass it around, " + (i-1) +  "bottle of beer on the wall!";
+    var newDiv1 = $('<p>');
+    var newDiv2 = $('<p>');
 
+    newDiv1.append(txt1);
+    newDiv2.append(txt2);
+    newDiv1.append(newDiv2);
+    $("#output-area").append(newDiv1);
+    i--;
+  }
   
 
 
@@ -35,9 +47,9 @@ $(function() {
   $(document).on("click", "button[type=submit]", function(event){
     event.preventDefault();
 
-    num = $("input").val().trim();
+    var num = $("input").val().trim();
     $("#output-area").empty();
     sing(num);
 
   });
-})
+});

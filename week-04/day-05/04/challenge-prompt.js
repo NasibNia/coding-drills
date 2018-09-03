@@ -9,12 +9,14 @@
 // -------------------------------------------------------
 function fibonacci(num) {
   // -------------------- Your Code Here --------------------
-
-
-
-
-
-
+  var fiboArr = [];
+  if (num == 0){
+    return 0;
+  } else if(num == 1){
+    return 1;
+  } else {
+    return  fibonacci(num-1) + fibonacci(num-2);  
+  }
   // --------------------- End Code Area --------------------
 }
 
@@ -23,9 +25,11 @@ function fibonacci(num) {
 $(function() {
   $(document).on("click", "button[type=submit]", function(event){
     event.preventDefault();
+    $("#output-area").empty();
     
-    num = $("input").val().trim();
+    var num = $("input").val().trim();
+    
     $("#output-area").text(fibonacci(num));
 
   });
-})
+});

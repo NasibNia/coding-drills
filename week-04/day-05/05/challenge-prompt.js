@@ -10,7 +10,16 @@
 // -------------------------------------------------------
 function countCons(str) {
   // -------------------- Your Code Here --------------------
-
+  var list = 'BCDFGHJKLMNPQRSTUVWXYZ';
+  var count = 0;
+  for (var i = 0; i < str.length; i++) {
+    var letter = str[i];
+    if(list.indexOf(letter) !== -1){
+      count++;
+    }
+    
+  }
+  return count;
 
 
 
@@ -25,8 +34,8 @@ $(function() {
   $(document).on("click", "button[type=submit]", function(event){
     event.preventDefault();
     
-    num = $("input").val().trim();
-    $("#output-area").text(countCons(num));
+    var str = $("input").val().trim();
+    $("#output-area").text(countCons(str));
 
   });
-})
+});

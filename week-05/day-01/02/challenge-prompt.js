@@ -60,7 +60,7 @@ $("#output-area").append(`
       <p class="text-left">[${primeFactors(testnum1)}]</p> 
     </div>
   </div>
-`)
+`);
 
 // ---------------------------- Test 02 -----------------------------
 var testnum2 = 104;
@@ -75,7 +75,7 @@ $("#output-area").append(`
       <p class="text-left">[${primeFactors(testnum2)}]</p> 
     </div>
   </div>
-`)
+`);
 
 // ---------------------------- Test 03 -----------------------------
 var testnum3 = 54321;
@@ -90,4 +90,4 @@ $("#output-area").append(`
       <p class="text-left">[${primeFactors(testnum3)}]</p> 
     </div>
   </div>
-`)
+`);

@@ -14,8 +14,34 @@
 
     function largestSum(arr) {
     // ====================== YOUR WORK HERE ===================
+      var a = arr[0];
+      var b = arr[1];
+      var sum = a + b;
 
+      for (var i = 2; i < arr.length; i++) {
+        var num = arr[i];
+        if ((num + a> sum) && (num + a > num + b)){
+          b = num;
+        } else if ((num + b > sum) && (num + b > num + a)){
+          a = num
+        }
+        sum = a + b;
+      }
+      return sum;
+      
+      // case 1
+      // a       b     
+      //         num
+      // comparison : 
+      // a   +   b     ?  a      +   num
+      // a   +   num   ?  num    +   b
 
+      // case 2 
+      // a       b     
+      // num
+      // comparison : 
+      // a      +   b   ?  num    +   b
+      // num    +   b   ?  a      +   num
 
 
 

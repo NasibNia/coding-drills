@@ -12,12 +12,13 @@
 function reverse(str) {
   // -------------------- Your Code Here --------------------
 
-  var newStr = "";
+  var arr = str.split(" ");
+  var rvrs = "";
   
-  for (let i = str.length; i > 0 ; i--) {
-    newStr.push(str[i]);  
+  for (var i = arr.length-1; i >= 0 ; i--) {
+    rvrs = rvrs + arr[i] +" ";  
   }
-  return newStr;
+  return rvrs;
 
 
   // --------------------- End Code Area --------------------
@@ -71,4 +72,4 @@ $("#output-area").append(`
       <p class="text-left">${reverse(teststr3)}</p> 
     </div>
   </div>
-`)
+`);
