@@ -5,7 +5,9 @@
 // inside the function, execute the callback with the string as the argument
 
 // ===================== Code Starts Here =====================
-
+function minionOne (callback , string){
+    callback(string);
+}
 
 
 
@@ -17,7 +19,7 @@
 // a string of "Have you seen Gru?" as arguments
 
 // ===================== Code Starts Here ===================
-
+minionOne(minionTwo , "Have you seen Gru?" );
 
 
 
@@ -29,7 +31,9 @@
 // and console logs the string
 
 // ===================== Code Starts Here =====================
-
+function minionTwo (str){
+    console.log(str);
+}
 
 
 
@@ -42,7 +46,14 @@
 // if the boolean wasn't true, console log "Still looking for Gru\n -------------\n"
 
 // ===================== Code Starts Here =====================
-
+function minionThree(callback , boolean){
+    if (boolean){
+        console.log("I found Gru\n -------------\n");
+        callback();
+    } else {
+        console.log("Still looking for Gru\n -------------\n");
+    }
+}
 
 
 
@@ -54,7 +65,9 @@
 // console logs "Hip Hip Horray!\n -------------\n"
 
 // ===================== Code Starts Here =====================
-
+function callBacksAreFun (){
+    console.log("Hip Hip Horray!\n -------------\n");
+}
 
 
 
@@ -67,7 +80,7 @@
 
 // ===================== Code Starts Here =====================
 
-
+minionThree(callBacksAreFun, true);
 
 
 // ===================== Code Ends Here ===================== 

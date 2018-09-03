@@ -5,7 +5,7 @@ var Deck = challengePrompt.Deck;
 // ------------------------------------------------------------------
 console.log("\n==================== Test 01 ====================");
 console.log("\nThe following should print the card number 5:");
-var testCard = new Card(5)
+var testCard = new Card(5);
 testCard.print();
 
 // ------------------------------------------------------------------

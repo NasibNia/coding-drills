@@ -21,15 +21,15 @@ function damageBool(perc) {
   var comp = Math.floor(Math.random() * 100) + 1
 
   if (perc - comp > 0) {
-    return false
+    return false;
   } else {
-    return true
+    return true;
   }
 }
 
 
 //For inquirer prompt
-var zombieChoices = ["zombie1", "zombie2", "zombie3", "zombie4", "zombie5"]
+var zombieChoices = ["zombie1", "zombie2", "zombie3", "zombie4", "zombie5"];
 
 //For objecy lookup
 var zombieIndex = ["zombie1", "zombie2", "zombie3", "zombie4", "zombie5"]
@@ -291,16 +291,16 @@ console.log("\n=============================\n")
 
       case "RPG":
         playerDam = calcDamage(weapons.rpg.attack[0], weapons.rpg.attack[1]);
-        playerDidDam = damageBool(weapons.rpg.reliability)
-        weapons.rpg.uses--
-        pickZombie(weapons.rpg)
+        playerDidDam = damageBool(weapons.rpg.reliability);
+        weapons.rpg.uses--;
+        pickZombie(weapons.rpg);
 
         break;
 
         case "View Weapon Stats":
         console.log( "Bear Hands:\n reach: 1\n attack: 5 \n risk:95\n reliability: 90 \n uses: ∞\n\n Machete: \n reach: 1\n attack: min(40), max(60)\n risk: 80\n reliability: 90\n uses: 5\n\nShotgun: \n reach: 2\n attack: min(30), max(50)\n risk: 65\n reliability: 80\n uses: 5\n\nPistol: \n reach: 2\n attack: min(25) max(40)\n risk: 50\n reliability: 75\n uses: 5\n\nMachine Gun:\n reach: 3\n attack: min(15), max(30)\n risk: 30\n reliability: 65\n uses: 5\n\nSniper:\n reach: 1\n attack: min(40) max(60)\n risk: 30\n reliability: 20\n uses: 5\n\nRPG:\n reach: 4\n attack: min(20), max(35)\n risk: 95\n reliability: 40\n uses: 5\n\n")
 
-        nextRound()
+        nextRound();
         break;
     }
 
@@ -371,20 +371,20 @@ function pickZombie(weapon) {
     if (!damageBool(weapon.risk)) {
       var zombieDamSum = calcDamage(zombies.zombie1.attack[0], [1]) + calcDamage(zombies.zombie2.attack[0], [1]) + calcDamage(zombies.zombie3.attack[0], [1]) + calcDamage(zombies.zombie4.attack[0], [1]) + calcDamage(zombies.zombie5.attack[0], [1]);
 
-      hero.health -= zombieDamSum
-      console.log("\nThe hero has been dealt " + zombieDamSum + " damage.")
-      console.log("\nThe hero has " + hero.health + " health.")
+      hero.health -= zombieDamSum;
+      console.log("\nThe hero has been dealt " + zombieDamSum + " damage.");
+      console.log("\nThe hero has " + hero.health + " health.");
 
     } else {
-      console.log("\nPhew, that was a close one. You avoided all damage")
+      console.log("\nPhew, that was a close one. You avoided all damage");
     }
     
     if (weapon.uses < 1) {
-      guns.splice(guns.indexOf(weapon.name), 1)
+      guns.splice(guns.indexOf(weapon.name), 1);
     }
 
-    nextRound()
-  })
+    nextRound();
+  });
 }
 
 function nextRound() {
@@ -395,16 +395,16 @@ function nextRound() {
       message: "Press ENTER to continue"
     }
   ]).then(function(res) {
-    checkRound()
-  })
+    checkRound();
+  });
 }
 
 
 // Starts the game!
 
-console.log("\nWELCOME TO ZOMBIE FIGHTER PRO. USE STRATEGY AND GRIT TO ELIMINATE THE HORDE OF ONCOMING ZOMBIES. HERE ARE THE WEAPONS YOU CAN CHOOSE. YOU WILL PICK ONE FOR EACH FIGHT!")
+console.log("\nWELCOME TO ZOMBIE FIGHTER PRO. USE STRATEGY AND GRIT TO ELIMINATE THE HORDE OF ONCOMING ZOMBIES. HERE ARE THE WEAPONS YOU CAN CHOOSE. YOU WILL PICK ONE FOR EACH FIGHT!");
 
-console.log("\n===========================================\n")
+console.log("\n===========================================\n");
 
 console.log("Bear hands: Zombies don't feel punches the same way humans do. Only use these as a last resort \n uses: ∞ \n\n", 
 
@@ -418,7 +418,7 @@ console.log("Bear hands: Zombies don't feel punches the same way humans do. Only
 
 "Sniper: A low-risk, high-reward weapon that can damage a single zombie. It's tough to hit shots with it though. \n uses: " + weapons.sniper.uses + " \n\n", 
 
-"RPG: An incredibly difficult weapon to use. If you can manage to get it to work, it will deal damage to up to 4 zombies. \n uses: " + weapons.rpg.uses + " \n\n")
+"RPG: An incredibly difficult weapon to use. If you can manage to get it to work, it will deal damage to up to 4 zombies. \n uses: " + weapons.rpg.uses + " \n\n");
 
 playRound();
 

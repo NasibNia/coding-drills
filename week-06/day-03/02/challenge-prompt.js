@@ -9,37 +9,37 @@
 //--------------------------------------------------------------------------------
 function minionOne(gru) {
   if (gru === true) {
-    console.log("12 I have found Gru")
+    console.log("12 I have found Gru");
   } else {
-    console.log("14 I haven't seen Gru")
+    console.log("14 I haven't seen Gru");
   }
 }
 
 function minionTwo(gru, callback1, callback2, callback3) {
   if (gru === true) {
-    console.log("20 I have found Gru")
+    console.log("20 I have found Gru");
   } else {
-    console.log("22 I haven't seen Gru")
-    callback1(gru, callback2, callback3)
+    console.log("22 I haven't seen Gru");
+    callback1(gru, callback2, callback3);
   }
 }
 
 function minionThree(gru, callback1, callback2) {
   if (gru == true) {
-    console.log("29 I have found Gru")
+    console.log("29 I have found Gru");
   } else {
-    console.log("31 I haven't seen Gru")
-    callback1(gru, callback2)
+    console.log("31 I haven't seen Gru");
+    callback1(gru, callback2);
   }
 }
 
 function minionFour(gru, callback) {
   gru = true;  
   if (gru === true) {
-    console.log("39 I have found Gru")
-    return callback(gru) 
+    console.log("39 I have found Gru");
+    return callback(gru); 
   } else {
-    console.log("42 I haven't seen Gru")
+    console.log("42 I haven't seen Gru");
   }
 }
 //--------------------------------------------------------------------------------
@@ -56,8 +56,11 @@ function minionFour(gru, callback) {
  -=- YOUR ANSWER HERE -=-
 
 
-
-
+ "22 I haven't seen Gru"
+ "31 I haven't seen Gru"
+ "39 I have found Gru"
+ "12 I have found Gru" 
+ "14 I haven't seen Gru"
 
 
 
