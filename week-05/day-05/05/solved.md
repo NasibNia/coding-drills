@@ -1,16 +1,16 @@
 One time weighting could work.
 
-10  9   8   7   6   5   4   3   2   1
-o   o   o   o   o   o   o   o   o   o
-o   o   o   o   o   o   o   o   o   
-o   o   o   o   o   o   o   o   
-o   o   o   o   o   o   o
-o   o   o   o   o   o
-o   o   o   o   o
-o   o   o   o
-o   o   o
-o   o
-o
+- 10  9   8   7   6   5   4   3   2   1
+- o   o   o   o   o   o   o   o   o   o
+- o   o   o   o   o   o   o   o   o   
+- o   o   o   o   o   o   o   o   
+- o   o   o   o   o   o   o
+- o   o   o   o   o   o
+- o   o   o   o   o
+- o   o   o   o
+- o   o   o
+- o   o
+- o
 
 if we put all the satcks in line and label them as shown above, then choose different numbers of coins from each, and put them all on the scale , after that we can confidently say which of the original bags contain the conterfiet. here is how:
 
