@@ -17,12 +17,13 @@ var connection = mysql.createConnection({
     user: "root",
 
     // Your password
-    password: "",
+    password: "password",
     database: "emmysDB"
 });
 
 connection.connect(function (err) {
     if (err) throw err;
+    console.log("connected");
 });
 
 //This function will be called multiple times to show us an updated version of our list of nominees
@@ -33,7 +34,28 @@ function review() {
     //TO-DO go to this link and read the documentation: https://www.npmjs.com/package/cli-table.
     //Display all of the nominees and their respective data to the command line using CLI Table
     //Once you've done so, invoke the restart function at the end of this function
+    
+    var table = new Table({
+        head: ['SHOW NAME', '# of SEASONS', 'GENRE', 'RATING']
+      , colWidths: [20, 20, 10, 10],
+      chars: { 'top': '═' , 'top-mid': '╤' , 'top-left': '╔' ,             'top-right': '╗', 'bottom': '═' , 'bottom-mid': '╧' ,             'bottom-left': '╚' , 'bottom-right': '╝', 'left': '║' ,           'left-mid': '╟' , 'mid': '─' , 'mid-mid': '┼'
+         , 'right': '║' , 'right-mid': '╢' , 'middle': '│' }
+    });
 
+    
+    connection.query("SELECT * FROM nominees", function(err, data){
+        if (err) throw err;
+        console.log(data);
+        for (var i=0 ; i < data.length ; i++){
+            table.push(
+                [data[i].show_name , data[i].num_seasons,data[i].genre, data[i].rating]
+            );
+        }
+        console.log(table.toString());
+
+    });
+
+    restart();
 }
 
 
@@ -62,6 +84,7 @@ function manageNominees() {
 
 
            // 4. Call the populate nominees function here, and pass it upddateRating as an argument. This will give us an array of options to give to the user when they want to choose who to update;
+                populateNominees(updateRating);
                 break;
 
             //DELETE    
@@ -70,10 +93,11 @@ function manageNominees() {
 
 
             // 5. Call the populate nominees function here, and pass it remove as an argument. This will give us an array of options to give to the user when they want to choose who to update;
+                populateNominees(remove);
                 break;
 
         }
-    })
+    });
 }
 
 
@@ -98,16 +122,19 @@ function add() {
 
 
         //7. complete the query string:
-        var queryString = //"????"
+        var queryString = "INSERT INTO nominees SET ?";
         connection.query(queryString, {
-
-
+            show_name   : answers.nomiName,
+            num_seasons : parseInt(answers.seasons),
+            genre       : answers.genre,
+            rating      : parseFloat(answers.rating)
          //8.
           //??????
-        })
+        });
         //Let's have a gander at our updated table (pulling straight from our database!!!!)
-        review()
-    })
+
+        review();
+    });
 }
 //In our inquirer, we could have the user manually type in the name of a show... but what if they mispell?! 
 
@@ -116,19 +143,22 @@ function add() {
 //Using the values in our table, populate an inquirer list of nominees. 
 function populateNominees(crud){
     //We don't wan't this array doubling, tripling, etc.. every time we call this function. 
-    options = []
+    var options = [];
 
 
     //10. Complete the query string.
-    var queryString = //"?????"
+    var queryString = "SELECT * FROM nominees";
     connection.query(queryString, function (err, res) {
 
-       
+        
         //11. LOOP through the names of the nominees, and PUSH them into our options array
+        for (var i = 0; i < res.length; i++){
+            options.push(res[i].show_name);
+        }
        
         //Here is our callback. It will call either the update or delete functions depending on what we pass to it in our switch/case
-        crud(options)
-    })
+        crud(options);
+    });
 
 
 }
@@ -150,20 +180,24 @@ function updateRating(list) {
 
 
         //12. Complete the query string
-        var queryString = //"????"
+        var queryString = "UPDATE nominees SET ? WHERE ?";
         connection.query(queryString,[
-
-
             //13. Update the rating of the chosen show
           //?????????
+            {   
+                rating : parseFloat(answers.rating)
+            },
+            {
+                show_name : answers.nominee
+            }
         ], 
         function(err, res) {
-            console.log("Here is an updated list of the nominees:")
+            console.log("Here is an updated list of the nominees:");
             //Let's have a look at our updated table (pulling straight from our database!!!!)
-            review()   
+            review() ;  
         }
-    )
-    })
+    );
+    });
 
     
 }
@@ -174,24 +208,25 @@ function remove(list) {
         name: "delete",
         type: "list",
         //Remember, list is the options array we passed to this function in our populateNominees function. It is an array containing the most up-to-date list of nominee names
-        choices: options,
+        choices: list,
         message: "Who is getting booted from the nominees?"
     }]).then(function(answer){
 
 
         //14. Complete the query string
-        var queryString = //"?????"
+        var queryString = "DELETE FROM nominees WHERE ?";
         connection.query(queryString,{
 
             
             //15. Delete the chosen nominee
             //This is the row WHERE we will execute our delete
               //?????
-        })
+              show_name : answer.delete
+        });
         //Let's have a gander at our updated table (pulling straight from our database!!!!)
-        review()
+        review();
        
-    })
+    });
 
 }
 
@@ -207,7 +242,7 @@ function restart() {
             manageNominees();
             //Otherwise, we'll terminate the process
         } else {
-           exit()
+           exit();
         }
 
     });
@@ -215,12 +250,12 @@ function restart() {
 
 
 function exit() {
-    console.log("Thanks for making the all time Emmy's special! Goodbye.")
+    console.log("Thanks for making the all time Emmy's special! Goodbye.");
     //This will exit out of our command line process
-    connection.end()
+    connection.end();
 }
 
 //This is where the magic begins
-manageNominees()
+manageNominees();
 
 //If you've made it here, you should be done!!!!

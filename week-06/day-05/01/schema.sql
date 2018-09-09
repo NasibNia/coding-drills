@@ -6,7 +6,15 @@ USE stockDB;
 CREATE TABLE stock (
 -- YOUR CODE HERE --
 
+id INTEGER(11) AUTO_INCREMENT NOT NULL,
+Date DATE,
+Open FLOAT,
+High FLOAT,
+Low FLOAT,
+Close FLOAT,
+Volume INTEGER(12),
 
+PRIMARY KEY (id)
 
 
 
@@ -17,3 +25,5 @@ CREATE TABLE stock (
 );
 
 SELECT * FROM stock;
+
+

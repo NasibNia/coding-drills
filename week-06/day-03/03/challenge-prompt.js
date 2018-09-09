@@ -6,7 +6,7 @@ Given 2 numbers, "oddChecker" returns true if both numbers are odd
 Starter Code :*/
 function oddChecker(num1, num2) {
   // code starts here
-
+  
 
 
 

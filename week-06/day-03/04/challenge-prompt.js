@@ -6,7 +6,7 @@ Starter Code :*/
 function indexOfLetter(char, str) {
   // code starts here
 
-
+  
 
 
 

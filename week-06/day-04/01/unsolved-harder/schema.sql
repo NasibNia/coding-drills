@@ -6,15 +6,25 @@ CREATE DATABASE emmysDB;
 -- Make it clear that the database we want to refer to is the one we just created
 USE emmysDB;
 
+CREATE TABLE nominees (
 -- The table for emmy nominees must follow a very strict format. We must give it the following columns:
 -- 1. nominee_id - an integer that increments automaticallly. It should not be null
--- 2. show_name - the name of the show (must be a string, even if it's 90210)
--- 3. num_seasons - an integer pointing to the number of existing seasons for a show
--- 4. genre - a string pointing to the genre of the show
--- 5. rating - This is a DECIMAL which can hold two digits after the decimal. (We will be using it to make ratings out of 10. For example: we will be inputting ratings like 7.67)
--- 6. Set nominee_id as the primary key
 
-CREATE TABLE nominees (
+    nominee_id INTEGER(11) AUTO_INCREMEN  NOT NULL,
+
+-- 2. show_name - the name of the show (must be a string, even if it's 90210)
+    show_name VARCHAR(30),
+-- 3. num_seasons - an integer pointing to the number of existing seasons for a show
+    num_seasons INTEGER(5),
+
+-- 4. genre - a string pointing to the genre of the show
+    genre VARCHAR(30),
+-- 5. rating - This is a DECIMAL which can hold two digits after the decimal. (We will be using it to make ratings out of 10. For example: we will be inputting ratings like 7.67)
+    rating FLOAT(3,2)
+-- 6. Set nominee_id as the primary key
+    PRIMARY KEY (nominee_id)
+
+
 
 );
 

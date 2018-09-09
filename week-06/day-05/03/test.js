@@ -1,4 +1,4 @@
-longestSubstring = require("./challenge-prompt.js");
+var longestSubstring = require("./challenge-prompt.js");
 
 
 // ------------------------------------------------------------------

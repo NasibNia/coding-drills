@@ -20,8 +20,6 @@ while(num <= dividend){
 }
 return count;
 
-
-
 // --------------------- End Code Area --------------------
 }
 
