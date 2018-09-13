@@ -1,4 +1,6 @@
 // Declare our dependencies
+var express = require("express");
+var app = express();
 
 var path = require("path");
 
@@ -28,7 +30,7 @@ var students = [
     img: "https://vignette.wikia.nocookie.net/polski-dubbing/images/3/3b/Hermiona_Granger.png/revision/latest?cb=20160505205558&path-prefix=pl",
     skills: []
   }
-]
+];
 
 
 // Serving the HTML
@@ -46,11 +48,52 @@ app.get("/learn", function(req, res) {
 
 // API ROUTES
 // ================== YOUR WORK HERE ==============
+app.get("/api/students/all", function(req, res){
+  return res.json(students);
+});
 
+app.get("/api/students/:id" , function(req,res){
+  var sId  = parseInt(req.params.id);
+  for (var i = 0; i < students.length; i++) {
+    if(sId === students[i].id){
+      return res.json(students[i].id);
+    }
+  }
+});
+
+app.post("/api/students/add", function(req,res){
+  students.push(req.body);
+  res.json(true);
+});
+
+app.put("/api/students/:id/learn" , function(req,res){
+  var sId  = parseInt(req.params.id);
+  for (var i = 0; i < students.length; i++) {
+    if(sId === students[i].id){
+      var thisStdnt = students[i].id;
+      thisStdnt.learn = true;
+      return res.json(thisStdnt);
+    }
+  }
+});
+
+app.delete("/api/students/:id" , function(req,res){
+  var sId  = parseInt(req.params.id);
+  for (var i = 0; i < students.length; i++) {
+    if(sId === students[i].id){
+      delete(students[i]);
+    }
+  }
+});
 
 
 // ================================================
 
+// 1. `GET` "/api/students/all". Returns all students.
+// 2. `GET` "/api/students/:id". Returns JSON for a specific student. User will need to manually type the id into the url to see the JSON.
+// 3. `POST` "/api/students/add". Adds a new student.
+// 4. `PUT` "/api/students/:id/learn". Adds a new skill for the student.
+// 5. `DELETE` "/api/students/:id". Removes a student.
 
 
 // Start the server listening on the designated port

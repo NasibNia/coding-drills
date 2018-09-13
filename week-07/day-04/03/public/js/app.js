@@ -1,5 +1,6 @@
 $(document).ready(function () {
   
+  var thisStId;
     //PLEASE WRITE COMMENTS IN THIS FUNCTION EXPLAINING WHAT EACH SECTION OF CODE IS DOING
     function renderStudents(id, house, name, pic, skills) {
   
@@ -54,9 +55,9 @@ $(document).ready(function () {
         }
       
   
-      htmlString += "</div></div>"
+      htmlString += "</div></div>";
   
-      $(".students-append").append(htmlString)
+      $(".students-append").append(htmlString);
   
     }
   
@@ -65,6 +66,31 @@ $(document).ready(function () {
 
     function getStudents() {
     // WRITE A GET request at the ROUTE `"/api/students/all"`. IF A STUDENT HAS PASSED ALL THEIR OWLS (THE USER HAS CLICKED ON ALL THE CLASSES), CALL THE passOwls(id) FUNCTION, PASSING IN THE ID OF THE STUDENT. FOR EVERY STUDENT, CALL THE renderStudents() FUNCTION, PASSING IN THE ID, HOUSE, NAME, IMAGE, AND SKILLS OF A STUDENT, IN THAT ORDER.
+    $.get("/api/students/all",function(data){
+      console.log(data);
+
+      for (var i = 0; i < data[i] ; i++){
+        var currentSkills = data[i].skills;
+        var id  = data[i].id;
+        if (currentSkills.length === 7 ){
+          //that means all the owls are passed
+          passOWLS(id);
+        }
+      }
+      for (var i = 0; i < data.length; i++) {
+        var currentSt = data[i];
+        var id = currentSt.id;
+        var house = currentSt.house;
+        var name = currentSt.name;
+        var image = currentSt.image;
+        var skills = currentSt.skills;
+
+        renderStudents(id,house,name,image,skills);
+        
+      }
+      
+
+    });
 
 
 
@@ -72,17 +98,15 @@ $(document).ready(function () {
   
     function passOWLS(id) {
     //WRITE A DELETE request at the ROUTE AT "/api/students/:ID" 
-
-
-
+    $.delet("/api/students/"+id);
     }
   
-    getStudents()
+    getStudents();
   
   //Pick student. No work needs to be done here.
   $(document).on("click", ".studentsExtra", function() {
  
-    $(".school-students").addClass("cursor-no")
+    $(".school-students").addClass("cursor-no");
   
     $(".teachers-img").removeClass("cursor-no")
     $(".teachers-img").addClass("cursor-pointer")
@@ -91,9 +115,9 @@ $(document).ready(function () {
     $(this).addClass("blur")
     $(this).removeClass("cursor-no")
   
-    chosenStudentId = $(this).attr("id")
+    thisStId = $(this).attr("id")
     $(".school-students").removeClass("studentsExtra")
-  })
+  });
   
     //Add badge
     $(document).on("click", ".skillPick", function () {
@@ -105,8 +129,10 @@ $(document).ready(function () {
     // $(".teachers-img").addClass("cursor-no")
     // $(".school-students").addClass("studentsExtra")
 
-
-
+      var id = $(this).attr("id");
+      $.put("api/students/"+thisStId+"/learn", function(data){
+          var thisSkill = $(this).attr();
+      });
 
 
     })

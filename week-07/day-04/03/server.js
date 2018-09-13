@@ -31,7 +31,7 @@ var students = [
     img: "https://vignette.wikia.nocookie.net/polski-dubbing/images/3/3b/Hermiona_Granger.png/revision/latest?cb=20160505205558&path-prefix=pl",
     skills: []
   }
-]
+];
 // Declaring a counter to keep track of the current ID for new students
 var idCounter = 3;
 
@@ -62,7 +62,7 @@ app.get("/api/students/:id", function (req, res) {
     currentStudent = students[i];
     if (currentStudent) {
       if (currentStudent.id === id) {
-        return res.json(currentStudent)
+        return res.json(currentStudent);
       }
     }
   }
@@ -99,7 +99,7 @@ app.put("/api/students/:id/learn", function (req, res) {
     }
   }
   return res.json(null);
-})
+});
 
 // Removing a student
 app.delete("/api/students/:id", function (req, res) {
@@ -114,8 +114,8 @@ app.delete("/api/students/:id", function (req, res) {
       }
     }
   }
-  return res.json(currentStudent)
-})
+  return res.json(currentStudent);
+});
 
 // Start the server listening on the designated port
 app.listen(PORT, function() {
